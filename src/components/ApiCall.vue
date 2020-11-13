@@ -1,8 +1,10 @@
 <template>
 	<div class="hello">
 		<p>__________</p>
-		<h1>{{ msg }}</h1>
-		<p>__________</p>
+    <div id="event-handling">
+      <p>{{ message }}</p>
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
 	</div>
 </template>
 
@@ -11,6 +13,26 @@
   name: 'ApiCall',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      message: 'Hello Vue.js!'
+    }
+  },
+  methods: {
+    fetchUsers: function () {
+      const baseURI = 'https://jsonplaceholder.typicode.com/users'
+      this.$http.get(baseURI)
+      .then((result) => {
+        this.users = result.data
+      })
+    },
+    reverseMessage() {
+      this.message = this.message
+        .split('')
+        .reverse()
+        .join('')
+    }
   }
 }
 </script>
