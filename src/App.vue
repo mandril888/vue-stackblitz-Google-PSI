@@ -7,15 +7,16 @@
 
 <script>
 	import HelloWorld from './components/HelloWorld.vue'
-import ApiCall from './components/ApiCall.vue'
+  import ApiCall from './components/ApiCall.vue'
+  import axios from 'axios'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    ApiCall
+  export default {
+    name: 'App',
+    components: {
+      HelloWorld,
+      ApiCall
+    }
   }
-}
 </script>
 
 <style>

@@ -1,50 +1,51 @@
 <template>
 	<div class="hello">
 		<p>__________</p>
-    <div id="event-handling">
-      <p>{{ message }}</p>
-      <button v-on:click="reverseMessage">Reverse Message</button>
-    </div>
-        <div id="list-rendering">
-      <ol>
-        <li v-for="todo in todos">
-          {{ todo.text }}
-        </li>
-      </ol>
-    </div>
+		<div id="event-handling">
+			<p>{{ message }}</p>
+			<button v-on:click="reverseMessage">Reverse Message</button>
+		</div>
+		<div id="list-rendering">
+			<ol>
+				<li>aaa</li>
+				<li v-for="user in users" :key="users.id">
+					<p>{{ user.name }}</p>
+				</li>
+			</ol>
+		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-  name: 'ApiCall',
-  props: {
-    msg: String
-  },
-  data() {
-    return {
-      message: 'Hello Vue.js!'
-    }
-  },
-  methods: {
-    fetchUsers: function () {
-      const baseURI = 'https://jsonplaceholder.typicode.com/users'
-      this.$http.get(baseURI)
-      .then((result) => {
-        this.users = result.data
-      })
+    name: 'ApiCall',
+    props: {
+      msg: String
     },
-    reverseMessage() {
-      this.message = this.message
-        .split('')
-        .reverse()
-        .join('')
+    data() {
+      return {
+        message: 'Hello Vue.js!',
+        users: []
+      }
+    },
+    methods: {
+      fetchUsers: function () {
+        const baseURI = 'https://jsonplaceholder.typicode.com/users'
+        this.$http.get(baseURI)
+        .then((result) => {
+          this.users = result.data
+        })
+      },
+      reverseMessage() {
+        this.message = this.message
+          .split('')
+          .reverse()
+          .join('')
+      }
     }
   }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 	.hello p {
 		text-align: center;
