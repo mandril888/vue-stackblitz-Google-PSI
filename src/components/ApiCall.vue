@@ -1,5 +1,5 @@
 <template>
-	<div class="hello">
+	<div class="api-call">
 		<p>__________</p>
 		<div id="event-handling">
 			<p>{{ message }}</p>
@@ -8,7 +8,7 @@
 		<div id="list-rendering">
 			<ol>
 				<li>aaa</li>
-				<li v-for="user in users" :key="users.id">
+				<li v-for="user in users">
 					<p>{{ user.name }}</p>
 				</li>
 			</ol>
