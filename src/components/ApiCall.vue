@@ -2,42 +2,60 @@
 	<div class="api-call">
 		<p>__________</p>
 		<div id="event-handling">
-			<p>{{ message }}</p>
-			<button v-on:click="reverseMessage">Reverse Message</button>
+			<p>{{ reversibleText }}</p>
+			<button v-on:click="reverseText">Reverse Text</button>
 		</div>
 		<div id="list-rendering">
 			<ol>
-				<li>aaa</li>
+				<li>First item</li>
 				<li v-for="user in users">
-					<p>{{ user.name }}</p>
+					<p>{{ user }}</p>
 				</li>
 			</ol>
+		</div>
+    <div class="card text-center m-3">
+      <h5 class="card-header">Simple GET Request</h5>
+      <div class="card-body">Total vue packages: <span>{{ simpleJson.title }}</span>
+    </div>
+    </div>
+		<div class="card text-center m-3">
+			<h5 class="card-header">Simple POST Request</h5>
+			<div class="card-body">Returned Id: <span>{{ articleId }}</span></div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import axios from 'axios'
+  
 	export default {
     name: 'ApiCall',
     props: {
-      msg: String
+      reversibleText: String
     },
     data() {
       return {
-        message: 'Hello Vue.js!',
-        users: []
+        reversibleText: 'Hello Vue.js!',
+        users: [],
+        simpleJson: {},
+        articleId: null
       }
     },
+    created() {
+      axios.get("https://jsonplaceholder.typicode.com/todos/1")
+        .then(response => this.simpleJson = response.data);
+
+      const article = { title: "Vue POST Request Example" };
+      axios.post("https://reqres.in/api/articles", article)
+        .then(response => this.articleId = response.data.id);
+
+      const baseURI = 'https://jsonplaceholder.typicode.com/users'
+      axios.post(baseURI)
+      .then((result) => this.users = result.data.id)
+    },
     methods: {
-      fetchUsers: function () {
-        const baseURI = 'https://jsonplaceholder.typicode.com/users'
-        this.$http.get(baseURI)
-        .then((result) => {
-          this.users = result.data
-        })
-      },
-      reverseMessage() {
-        this.message = this.message
+      reverseText() {
+        this.reversibleText = this.reversibleText
           .split('')
           .reverse()
           .join('')
@@ -47,25 +65,20 @@
 </script>
 
 <style scoped>
-	.hello p {
-		text-align: center;
-	}
-
-	h3 {
-		margin: 40px 0 0;
-	}
-
 	ul {
 		list-style-type: none;
 		padding: 0;
 	}
 
 	li {
-		display: inline-block;
-		margin: 0 10px;
+		text-align: left !important;
 	}
 
 	a {
 		color: #42b983;
 	}
+
+  span {
+    color: red;
+  }
 </style>

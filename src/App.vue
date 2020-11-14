@@ -8,7 +8,6 @@
 <script>
 	import HelloWorld from './components/HelloWorld.vue'
   import ApiCall from './components/ApiCall.vue'
-  import axios from 'axios'
 
   export default {
     name: 'App',
