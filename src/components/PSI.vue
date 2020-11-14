@@ -18,6 +18,7 @@
 			LOADING ...
 		</div>
 		<div id="PSI-info" v-if="infoFromTest">
+			<div class="h-100"></div>
 			<p><b>Web:</b> {{ infoFromTest.id }}</p>
 			<p>
 				<b>CLS:</b>
@@ -37,7 +38,6 @@
           infoFromTest.lighthouseResult.audits.metrics.details.items[0].maxPotentialFID
         }} ms
 			</p>
-			<div class="h-100"></div>
 		</div>
 	</div>
 </template>
