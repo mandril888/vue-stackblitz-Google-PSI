@@ -13,11 +13,11 @@
 				</li>
 			</ol>
 		</div>
-    <div class="card text-center m-3">
-      <h5 class="card-header">Simple GET Request</h5>
-      <div class="card-body">Total vue packages: <span>{{ simpleJson.title }}</span>
-    </div>
-    </div>
+		<div class="card text-center m-3">
+			<h5 class="card-header">Simple GET Request</h5>
+			<div class="card-body">Total vue packages: <span>{{ simpleJson.title }}</span>
+			</div>
+		</div>
 		<div class="card text-center m-3">
 			<h5 class="card-header">Simple POST Request</h5>
 			<div class="card-body">Returned Id: <span>{{ articleId }}</span></div>
@@ -78,7 +78,7 @@
 		color: #42b983;
 	}
 
-  span {
-    color: red;
-  }
+	span {
+		color: red;
+	}
 </style>

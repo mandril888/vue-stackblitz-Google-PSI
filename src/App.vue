@@ -1,8 +1,8 @@
 <template>
 	<div id="app">
-		<HelloWorld msg="Welcome to Your Vue.js App" />
+		<HelloWorld msg="Welcome to my Vue.js App" />
 		<PSI msg="Welcome to Your Vue.js App" />
-		<ApiCall msg="Welcome to Your Vue.js App" />
+		<!-- <ApiCall msg="Welcome to Your Vue.js App" /> -->
 	</div>
 </template>
 
@@ -31,7 +31,15 @@
 		margin-top: 60px;
 	}
 
-  .h-100 {
-    height: 100px;
-  }
+	/* ------- */
+	/* Helpers */
+	/* ------- */
+
+	.h-100 {
+		height: 100px;
+	}
+
+	.text-left {
+		text-align: left;
+	}
 </style>

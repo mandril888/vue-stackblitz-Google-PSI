@@ -1,32 +1,49 @@
 <template>
-  <div class="psi">
-    <div id="PSI-info" v-if="infoFromTest">
-      <p>Web: {{ infoFromTest.id }}</p>
-      <p>
-        CLS:
-        {{
+	<div class="psi">
+		<p>See the <a href="https://github.com/mandril888/vue-stackblitz-Google-PSI" target="_blank">repo</a> in my
+			GitHub.</p>
+		<p>I used:</p>
+		<ul>
+			<li>
+				<a href="https://v3.vuejs.org/guide/introduction.html" target="_blank">Vue CLI 3</a>
+			</li>
+			<li>
+				<a href="https://stackblitz.com/" target="_blank">Stackblitz</a>
+			</li>
+			<li>
+				<a href="https://github.com/mandril888" target="_blank">GitHub</a>
+			</li>
+		</ul>
+		<div v-if="!infoFromTest">
+			LOADING ...
+		</div>
+		<div id="PSI-info" v-if="infoFromTest">
+			<p><b>Web:</b> {{ infoFromTest.id }}</p>
+			<p>
+				<b>CLS:</b>
+				{{
           infoFromTest.lighthouseResult.audits.metrics.details.items[0].cumulativeLayoutShift
         }}
-      </p>
-      <p>
-        LCP:
-        {{
+			</p>
+			<p>
+				<b>LCP:</b>
+				{{
           infoFromTest.lighthouseResult.audits.metrics.details.items[0].largestContentfulPaint
         }}
-      </p>
-      <p>
-        FID:
-        {{
+			</p>
+			<p>
+				<b>FID:</b>
+				{{
           infoFromTest.lighthouseResult.audits.metrics.details.items[0].maxPotentialFID
         }} ms
-      </p>
-      <div class="h-100"></div>
-    </div>
-  </div>
+			</p>
+			<div class="h-100"></div>
+		</div>
+	</div>
 </template>
 
 <script>
-import axios from "axios";
+	import axios from "axios";
 
 export default {
   name: "psi",
@@ -45,24 +62,28 @@ export default {
 </script>
 
 <style scoped>
-#PSI-info {
-  text-align: left;
-}
+	#PSI-info {
+		text-align: left;
+	}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
 
-li {
-  text-align: left !important;
-}
+	#PSI-info li {
+		text-align: left !important;
+	}
 
-a {
-  color: #42b983;
-}
+	.psi li {
+		text-align: center !important;
+	}
 
-span {
-  color: red;
-}
+	a {
+		color: #42b983;
+	}
+
+	span {
+		color: red;
+	}
 </style>
