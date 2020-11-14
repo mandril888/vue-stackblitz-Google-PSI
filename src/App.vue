@@ -39,6 +39,10 @@
 		height: 100px;
 	}
 
+	.h-50 {
+		height: 50px;
+	}
+
 	.text-left {
 		text-align: left;
 	}

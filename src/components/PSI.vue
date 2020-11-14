@@ -14,11 +14,11 @@
 				<a href="https://github.com/mandril888" target="_blank">GitHub</a>
 			</li>
 		</ul>
+    <div class="h-50"></div>
 		<div v-if="!infoFromTest">
 			LOADING ...
 		</div>
 		<div id="PSI-info" v-if="infoFromTest">
-			<div class="h-100"></div>
 			<p><b>Web:</b> {{ infoFromTest.id }}</p>
 			<p>
 				<b>CLS:</b>
