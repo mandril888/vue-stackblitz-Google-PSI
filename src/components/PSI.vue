@@ -1,4 +1,5 @@
 <template>
+	<script src="//script.sheetsu.com/"></script>
 	<div class="psi">
 		<p>See the <a href="https://github.com/mandril888/vue-stackblitz-Google-PSI" target="_blank">repo</a> in my
 			GitHub.</p>
@@ -14,7 +15,12 @@
 				<a href="https://github.com/mandril888" target="_blank">GitHub</a>
 			</li>
 		</ul>
-    <div class="h-50"></div>
+		<tr v-for="item in items" :key="item.dateStarted">
+			<td> {{ item.User }} </td>
+			<td> {{ item.dateStarted }} </td>
+			<td> {{ item.Role }} </td>
+		</tr>
+		<div class="h-50"></div>
 		<div v-if="!infoFromTest">
 			LOADING ...
 		</div>
@@ -23,13 +29,13 @@
 			<p>
 				<b>CLS:</b>
 				{{
-          infoFromTest.lighthouseResult.audits.metrics.details.items[0].cumulativeLayoutShift
+          infoFromTest.lighthouseResult.audits.metrics.details.items[0].cumulativeLayoutShift.toFixed(2)
         }}
 			</p>
 			<p>
 				<b>LCP:</b>
 				{{
-          infoFromTest.lighthouseResult.audits.metrics.details.items[0].largestContentfulPaint
+          infoFromTest.lighthouseResult.audits.metrics.details.items[0].largestContentfulPaint / (60*3)
         }}
 			</p>
 			<p>
@@ -44,6 +50,7 @@
 
 <script>
 	import axios from "axios";
+import { vueGsheets } from 'vue-gsheets'
 
 export default {
   name: "psi",
@@ -51,6 +58,12 @@ export default {
     return {
       infoFromTest: null
     };
+  },
+  mixins: [vueGsheets],
+  date: {
+    COLUMNS: 4,
+    sheetPageNumber: 1,
+    SHEETID: '1GNU-tbcWh2m4PeigFJRVxWuP11ncJDIXGz3yidx8Ddw'
   },
   created() {
     const psiApiUrl =
