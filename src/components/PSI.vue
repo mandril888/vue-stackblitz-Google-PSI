@@ -4,6 +4,7 @@
 		<p>See the <a href="https://github.com/mandril888/vue-stackblitz-Google-PSI" target="_blank">repo</a> in my
 			GitHub.</p>
 		<p>I used:</p>
+
 		<ul>
 			<li>
 				<a href="https://v3.vuejs.org/guide/introduction.html" target="_blank">Vue CLI 3</a>
@@ -15,15 +16,13 @@
 				<a href="https://github.com/mandril888" target="_blank">GitHub</a>
 			</li>
 		</ul>
-		<tr v-for="item in items" :key="item.dateStarted">
-			<td> {{ item.User }} </td>
-			<td> {{ item.dateStarted }} </td>
-			<td> {{ item.Role }} </td>
-		</tr>
+
 		<div class="h-50"></div>
+
 		<div v-if="!infoFromTest">
 			LOADING ...
 		</div>
+
 		<div id="PSI-info" v-if="infoFromTest">
 			<p><b>Web:</b> {{ infoFromTest.id }}</p>
 			<p>
@@ -45,12 +44,12 @@
         }} ms
 			</p>
 		</div>
+    
 	</div>
 </template>
 
 <script>
 	import axios from "axios";
-import { vueGsheets } from 'vue-gsheets'
 
 export default {
   name: "psi",
@@ -58,12 +57,6 @@ export default {
     return {
       infoFromTest: null
     };
-  },
-  mixins: [vueGsheets],
-  date: {
-    COLUMNS: 4,
-    sheetPageNumber: 1,
-    SHEETID: '1GNU-tbcWh2m4PeigFJRVxWuP11ncJDIXGz3yidx8Ddw'
   },
   created() {
     const psiApiUrl =
